@@ -20,9 +20,17 @@
 		</c:forEach>
     </select>
     <label for="customer">Customer</label>
-    <input type="text" name="customer" id="customer">
+    <select size="1" name="customer">
+	    <c:forEach items="${customers }" var="customer">
+			<option value="${customer.fullName}">${customer.fullName}</option>
+		</c:forEach>
+    </select>
     <label for="status">Status</label>
-    <input type="text" name="status" id="status">
+    <select size="1" name="customer">
+	    <c:forEach items="${statuses }" var="status">
+			<option value="${status.title}">${status.title}</option>
+		</c:forEach>
+    </select>
     <input type="submit" value="Add new request">
 </form>
 </body>
