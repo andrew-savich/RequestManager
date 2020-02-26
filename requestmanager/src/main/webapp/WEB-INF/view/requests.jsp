@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Request Manager</title>
 </head>
 <body>
 	<h2>Requests Page</h2>

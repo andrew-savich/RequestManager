@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.andrewsavich.requestmanager.entity.Executor;
 import com.andrewsavich.requestmanager.entity.Request;
+import com.andrewsavich.requestmanager.model.RequestModel;
 import com.andrewsavich.requestmanager.service.ExecutorService;
 import com.andrewsavich.requestmanager.service.RequestService;
 
@@ -24,8 +25,7 @@ public class RequestController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView allRequests() {
-		List<Request> requests = requestService.allRequests();
-		System.out.println("from allRequests");
+		List<RequestModel> requests = requestService.allRequests();
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("requests");
 		modelAndView.addObject("requests", requests);
@@ -35,7 +35,6 @@ public class RequestController {
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
 	public ModelAndView editPage(@PathVariable("id") int id) {
 		Request request =  requestService.getRequestById(id);
-		System.out.println("from editPage");
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("editPage");
 		modelAndView.addObject("request", request);

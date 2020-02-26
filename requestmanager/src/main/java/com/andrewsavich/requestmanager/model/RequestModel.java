@@ -12,7 +12,7 @@ public class RequestModel {
 		return id;
 	}
 	
-	RequestModel(Request request){
+	public RequestModel(Request request){
 		this.id = request.getId();
 		this.title = request.getTitle();
 		this.executor = request.getExecutor().getFullName();
@@ -35,10 +35,10 @@ public class RequestModel {
 	public void setExecutor(String executor) {
 		this.executor = executor;
 	}
-	public String getCostumer() {
+	public String getCustomer() {
 		return customer;
 	}
-	public void setCostumer(String customer) {
+	public void setCustomer(String customer) {
 		this.customer = customer;
 	}
 	public String getStatus() {

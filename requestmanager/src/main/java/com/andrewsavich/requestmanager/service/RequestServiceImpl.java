@@ -1,5 +1,6 @@
 package com.andrewsavich.requestmanager.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,17 +9,22 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.andrewsavich.requestmanager.dao.DAO;
 import com.andrewsavich.requestmanager.entity.Request;
+import com.andrewsavich.requestmanager.model.RequestModel;
 
 @Service
 public class RequestServiceImpl implements RequestService {
 	@Autowired
 	private DAO<Request> requestDAO;
-
+	
+	
 	@Override
 	@Transactional
-	public List<Request> allRequests() {
-		System.out.println(requestDAO.allItems());
-		return requestDAO.allItems();
+	public List<RequestModel> allRequests() {
+		List<RequestModel> requestModels = new ArrayList<>();
+		for(Request request : requestDAO.allItems()) {
+			requestModels.add(new RequestModel(request));
+		}
+		return requestModels;
 	}
 
 	@Override
