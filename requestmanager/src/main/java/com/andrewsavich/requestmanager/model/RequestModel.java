@@ -7,9 +7,12 @@ public class RequestModel {
 	private String title;
 	private String executor;
 	private String customer;
-	private String Status;
+	private String status;
 	public int getId() {
 		return id;
+	}
+	public RequestModel() {
+		
 	}
 	
 	public RequestModel(Request request){
@@ -17,7 +20,7 @@ public class RequestModel {
 		this.title = request.getTitle();
 		this.executor = request.getExecutor().getFullName();
 		this.customer = request.getCustomer().getFullName();
-		this.Status = request.getStatus().getTitle();
+		this.status = request.getStatus().getTitle();
 	}
 	
 	public void setId(int id) {
@@ -42,10 +45,15 @@ public class RequestModel {
 		this.customer = customer;
 	}
 	public String getStatus() {
-		return Status;
+		return status;
 	}
 	public void setStatus(String status) {
-		Status = status;
+		this.status = status;
+	}
+	
+	@Override
+	public String toString() {
+		return id + " " + title + " " + executor + " " + customer + " " + status; 
 	}
 	
 	

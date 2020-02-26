@@ -71,10 +71,11 @@ public class RequestController {
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public ModelAndView addRequest(@ModelAttribute("request") Request request) {
+	public ModelAndView addRequest(@ModelAttribute("requestModel") RequestModel requestModel) {
 		ModelAndView modelAndView = new ModelAndView();
+		System.out.println(requestModel);
 		modelAndView.setViewName("redirect:/");
-		requestService.addRequest(request);
+		//requestService.addRequest(request);
 		return modelAndView;
 	}
 
