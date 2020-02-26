@@ -72,7 +72,6 @@ public class RequestController {
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public ModelAndView addRequest(@ModelAttribute("request") Request request) {
-		System.out.println(request.getTitle());
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("redirect:/");
 		requestService.addRequest(request);

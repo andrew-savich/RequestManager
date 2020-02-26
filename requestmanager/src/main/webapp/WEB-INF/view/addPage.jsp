@@ -26,7 +26,7 @@
 		</c:forEach>
     </select>
     <label for="status">Status</label>
-    <select size="1" name="customer">
+    <select size="1" name="status">
 	    <c:forEach items="${statuses }" var="status">
 			<option value="${status.title}">${status.title}</option>
 		</c:forEach>
