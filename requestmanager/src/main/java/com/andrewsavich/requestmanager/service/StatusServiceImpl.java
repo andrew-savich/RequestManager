@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.andrewsavich.requestmanager.dao.DAO;
-import com.andrewsavich.requestmanager.entity.Customer;
 import com.andrewsavich.requestmanager.entity.Status;
 
 @Service
@@ -28,16 +27,19 @@ public class StatusServiceImpl implements StatusService {
 	}
 
 	@Override
+	@Transactional
 	public void deleteStatus(Status status) {
 		statusDAO.delete(status);
 	}
 
 	@Override
+	@Transactional
 	public void updateStatus(Status status) {
 		statusDAO.update(status);
 	}
 
 	@Override
+	@Transactional
 	public Status getRequestById(int id) {
 		return statusDAO.getById(id);
 	}
