@@ -8,24 +8,24 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "executors")
-public class Executor {
+@Table(name = "customers")
+public class Customer {
 	@Id
-	@Column(name = "executor_id")
+	@Column(name = "customer_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
 	@Column(name = "full_name")
 	private String fullName;
 
-	@Column(name = "email")
-	private String email;
+	@Column(name = "address")
+	private String address;
 
-	public int getExecutor_id() {
+	public int getId() {
 		return id;
 	}
 
-	public void setExecutor_id(int id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -37,12 +37,12 @@ public class Executor {
 		this.fullName = fullName;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getAddress() {
+		return address;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 }

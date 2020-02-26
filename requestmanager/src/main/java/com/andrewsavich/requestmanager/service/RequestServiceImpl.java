@@ -17,6 +17,7 @@ public class RequestServiceImpl implements RequestService {
 	@Override
 	@Transactional
 	public List<Request> allRequests() {
+		System.out.println(requestDAO.allItems());
 		return requestDAO.allItems();
 	}
 

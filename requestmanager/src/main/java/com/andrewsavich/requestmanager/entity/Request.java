@@ -1,31 +1,39 @@
 package com.andrewsavich.requestmanager.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name = "requests")
 public class Request {
 	@Id
-	@Column(name = "id")
+	@Column(name = "request_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	@Column(name = "title")
 	private String title;
 	
-	@Column(name = "executor")
-	private String executor;
+	@ManyToOne ( optional=false, cascade=CascadeType.ALL)
+	@JoinColumn (name="executor_id")
+	private Executor executor;
 	
-	@Column(name = "customer")
-	private String customer;
+	@ManyToOne (optional=false, cascade=CascadeType.ALL)
+	@JoinColumn(name = "customer_id")
+	private Customer customer;
 	
-	@Column(name = "status")
-	private String status;
+	@ManyToOne (optional=false, cascade=CascadeType.ALL)
+	@JoinColumn(name = "status_id")
+	private Status status;
 
 
 	public int getId() {
@@ -44,27 +52,27 @@ public class Request {
 		this.title = title;
 	}
 
-	public String getExecutor() {
+	public Executor getExecutor() {
 		return executor;
 	}
 
-	public void setExecutor(String executor) {
+	public void setExecutor(Executor executor) {
 		this.executor = executor;
 	}
 
-	public String getCustomer() {
+	public Customer getCustomer() {
 		return customer;
 	}
 
-	public void setCustomer(String customer) {
+	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
 
-	public String getStatus() {
+	public Status getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(Status status) {
 		this.status = status;
 	}
 
