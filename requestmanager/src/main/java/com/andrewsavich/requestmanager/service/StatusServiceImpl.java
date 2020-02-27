@@ -40,8 +40,14 @@ public class StatusServiceImpl implements StatusService {
 
 	@Override
 	@Transactional
-	public Status getRequestById(int id) {
+	public Status getStatusById(int id) {
 		return statusDAO.getById(id);
+	}
+
+	@Override
+	@Transactional
+	public Status getStatusByTitle(String title) {
+		return statusDAO.getByField(title);
 	}
 
 }

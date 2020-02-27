@@ -18,7 +18,7 @@ public class CustomerDAO implements DAO<Customer> {
 	@SuppressWarnings("unchecked")
 	public List<Customer> allItems() {
 		Session session = sessionFactory.getCurrentSession();
-		return session.createQuery("from Customer").getResultList();
+		return session.createQuery("FROM Customer").list();
 	}
 
 	@Override
@@ -43,6 +43,12 @@ public class CustomerDAO implements DAO<Customer> {
 	public Customer getById(int id) {
 		Session session = sessionFactory.getCurrentSession();
 		return session.get(Customer.class, id);
+	}
+
+	@Override
+	public Customer getByField(String name) {
+		Session session = sessionFactory.getCurrentSession();
+		return (Customer) session.createQuery("FROM Customer WHERE fullName = :name").setParameter("name", name).uniqueResult();
 	}
 
 }

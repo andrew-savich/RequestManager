@@ -7,11 +7,13 @@ import com.andrewsavich.requestmanager.entity.Executor;
 public interface ExecutorService {
 	List<Executor> allExecutors();
 
-	void addRequest(Executor executor);
+	void addExecutor(Executor executor);
 
-	void deleteRequest(Executor executor);
+	void deleteExecutor(Executor executor);
 
-	void updateRequest(Executor executor);
+	void updateExecutor(Executor executor);
 
-	Executor getRequestById(int id);
+	Executor getExecutorById(int id);
+	
+	Executor getExecutorByName(String name);
 }

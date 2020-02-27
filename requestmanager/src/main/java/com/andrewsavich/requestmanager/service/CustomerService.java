@@ -7,11 +7,13 @@ import com.andrewsavich.requestmanager.entity.Customer;
 public interface CustomerService {
 	List<Customer> allCustomer();
 
-	void addRequest(Customer customer);
+	void addCustomer(Customer customer);
 
-	void deleteRequest(Customer customer);
+	void deleteCustomer(Customer customer);
 
-	void updateRequest(Customer customer);
+	void updateCustomer(Customer customer);
 
-	Customer getRequestById(int id);
+	Customer getCustomerById(int id);
+
+	Customer getCustomerByName(String name);
 }

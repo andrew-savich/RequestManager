@@ -11,8 +11,15 @@ import com.andrewsavich.requestmanager.entity.Executor;
 
 @Service
 public class ExecutorServiceImpl implements ExecutorService {
-	@Autowired
+	
 	private DAO<Executor> executorDAO;
+	
+	@Autowired
+	public void setExecutorDAO(DAO<Executor> executorDAO) {
+		this.executorDAO = executorDAO;
+	}
+
+	
 
 	@Override
 	@Transactional
@@ -20,28 +27,36 @@ public class ExecutorServiceImpl implements ExecutorService {
 		return executorDAO.allItems();
 	}
 
+	
 	@Override
 	@Transactional
-	public void addRequest(Executor executor) {
+	public void addExecutor(Executor executor) {
 		executorDAO.add(executor);
 	}
 
 	@Override
 	@Transactional
-	public void deleteRequest(Executor executor) {
+	public void deleteExecutor(Executor executor) {
 		executorDAO.delete(executor);
 	}
 
 	@Override
 	@Transactional
-	public void updateRequest(Executor executor) {
+	public void updateExecutor(Executor executor) {
 		executorDAO.update(executor);
 	}
 
 	@Override
 	@Transactional
-	public Executor getRequestById(int id) {
+	public Executor getExecutorById(int id) {
 		return executorDAO.getById(id);
 	}
+
+	@Override
+	@Transactional
+	public Executor getExecutorByName(String name) {
+		return executorDAO.getByField(name);
+	}
+	
 
 }

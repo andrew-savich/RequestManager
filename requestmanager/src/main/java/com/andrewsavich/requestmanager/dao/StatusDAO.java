@@ -46,4 +46,10 @@ public class StatusDAO implements DAO<Status> {
 		return session.get(Status.class, id);
 	}
 
+	@Override
+	public Status getByField(String title) {
+		Session session = sessionFactory.getCurrentSession();
+		return (Status)session.createQuery("FROM Status WHERE title = :title").setParameter("title", title).uniqueResult();
+	}
+
 }

@@ -22,7 +22,7 @@
     <label for="customer">Customer</label>
     <select size="1" name="customer">
 	    <c:forEach items="${customers }" var="customer">
-			<option value="${customer.fullName}">${customer.fullName}</option>
+			<option value="${customer.fullName }">${customer.fullName}</option>
 		</c:forEach>
     </select>
     <label for="status">Status</label>

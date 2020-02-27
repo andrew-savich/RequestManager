@@ -13,5 +13,7 @@ public interface StatusService {
 
 	void updateStatus(Status status);
 
-	Status getRequestById(int id);
+	Status getStatusById(int id);
+
+	Status getStatusByTitle(String title);
 }

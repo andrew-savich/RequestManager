@@ -18,7 +18,7 @@ public class RequestDAO implements DAO<Request> {
 	@SuppressWarnings("unchecked")
 	public List<Request> allItems() {
 		Session session = sessionFactory.getCurrentSession();
-		return session.createQuery("from Request").list();
+		return session.createQuery("FROM Request").list();
 	}
 
 	@Override
@@ -43,6 +43,12 @@ public class RequestDAO implements DAO<Request> {
 	public Request getById(int id) {
 		Session session = sessionFactory.getCurrentSession();
         return session.get(Request.class, id);
+	}
+
+	@Override
+	public Request getByField(String name) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

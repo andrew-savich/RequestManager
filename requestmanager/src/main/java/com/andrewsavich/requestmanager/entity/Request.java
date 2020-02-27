@@ -10,7 +10,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name = "requests")
 public class Request {
@@ -18,22 +17,21 @@ public class Request {
 	@Column(name = "request_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	@Column(name = "title")
 	private String title;
-	
-	@ManyToOne ( optional=false, cascade=CascadeType.ALL)
-	@JoinColumn (name="executor_id")
+
+	@ManyToOne(optional = false, cascade = CascadeType.ALL)
+	@JoinColumn(name = "executor_id")
 	private Executor executor;
-	
-	@ManyToOne (optional=false, cascade=CascadeType.ALL)
+
+	@ManyToOne(optional = false, cascade = CascadeType.ALL)
 	@JoinColumn(name = "customer_id")
 	private Customer customer;
-	
-	@ManyToOne (optional=false, cascade=CascadeType.ALL)
+
+	@ManyToOne(optional = false, cascade = CascadeType.ALL)
 	@JoinColumn(name = "status_id")
 	private Status status;
-
 
 	public int getId() {
 		return id;

@@ -56,5 +56,9 @@ public class RequestModel {
 		return id + " " + title + " " + executor + " " + customer + " " + status; 
 	}
 	
+	public Request convertToRequest() {
+		return new Request();
+	}
+	
 	
 }

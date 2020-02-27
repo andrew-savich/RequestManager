@@ -21,11 +21,11 @@ public class Executor {
 	@Column(name = "email")
 	private String email;
 
-	public int getExecutor_id() {
+	public int getId() {
 		return id;
 	}
 
-	public void setExecutor_id(int id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

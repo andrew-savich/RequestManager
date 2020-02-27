@@ -15,13 +15,12 @@ import com.andrewsavich.requestmanager.model.RequestModel;
 public class RequestServiceImpl implements RequestService {
 	@Autowired
 	private DAO<Request> requestDAO;
-	
-	
+
 	@Override
 	@Transactional
 	public List<RequestModel> allRequests() {
 		List<RequestModel> requestModels = new ArrayList<>();
-		for(Request request : requestDAO.allItems()) {
+		for (Request request : requestDAO.allItems()) {
 			requestModels.add(new RequestModel(request));
 		}
 		return requestModels;

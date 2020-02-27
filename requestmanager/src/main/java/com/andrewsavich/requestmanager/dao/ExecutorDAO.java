@@ -11,14 +11,20 @@ import com.andrewsavich.requestmanager.entity.Executor;
 
 @Repository
 public class ExecutorDAO implements DAO<Executor> {
-	@Autowired
+
 	private SessionFactory sessionFactory;
+
+	@Autowired
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
 	
+
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<Executor> allItems() {
 		Session session = sessionFactory.getCurrentSession();
-		return session.createQuery("from Executor").list();
+		return session.createQuery("FROM Executor").list();
 	}
 
 	@Override
@@ -43,6 +49,13 @@ public class ExecutorDAO implements DAO<Executor> {
 	public Executor getById(int id) {
 		Session session = sessionFactory.getCurrentSession();
 		return session.get(Executor.class, id);
+	}
+
+
+	@Override
+	public Executor getByField(String name) {
+		Session session = sessionFactory.getCurrentSession();
+		return (Executor) session.createQuery("FROM Executor WHERE fullName = :name").setParameter("name", name).uniqueResult();
 	}
 
 }
