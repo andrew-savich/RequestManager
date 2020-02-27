@@ -42,10 +42,16 @@ public class RequestController {
 
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
 	public ModelAndView editPage(@PathVariable("id") int id) {
-		Request request = requestService.getRequestById(id);
+		RequestModel requestModel = new RequestModel(requestService.getRequestById(id));
+		List<Executor> executors = executorService.allExecutors();
+		List<Customer> customers = customerService.allCustomer();
+		List<Status> statuses = statusService.allStatuses();
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("editPage");
-		modelAndView.addObject("request", request);
+		modelAndView.addObject("request", requestModel);
+		modelAndView.addObject("executors", executors);
+		modelAndView.addObject("customers", customers);
+		modelAndView.addObject("statuses", statuses);
 		return modelAndView;
 	}
 

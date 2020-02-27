@@ -14,11 +14,23 @@
     <label for="title">Title</label>
     <input type="text" name="title" id="title" value = "${request.title }">
     <label for="executor">Executor</label>
-    <input type="text" name="executor" id="executor" value = "${request.executor }">
+    <select size="1" name="executor">
+	    <c:forEach items="${executors }" var="executor">
+			<option value="${executor.fullName}">${executor.fullName}</option>
+		</c:forEach>
+    </select>
     <label for="customer">Customer</label>
-    <input type="text" name="customer" id="customer" value = "${request.customer }">
+    <select size="1" name="customer">
+	    <c:forEach items="${customers }" var="customer">
+			<option value="${customer.fullName }">${customer.fullName}</option>
+		</c:forEach>
+    </select>
     <label for="status">Status</label>
-    <input type="text" name="status" id="status" value = "${request.status }">
+    <select size="1" name="status">
+	    <c:forEach items="${statuses }" var="status">
+			<option value="${status.title}">${status.title}</option>
+		</c:forEach>
+    </select>
     <input type="submit" value="Edit request">
 </form>
 
