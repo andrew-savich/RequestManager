@@ -56,7 +56,14 @@ public class RequestController {
 	}
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST)
-	public ModelAndView editRequest(@ModelAttribute("request") Request request) {
+	public ModelAndView editRequest(@ModelAttribute("requestModel") RequestModel requestModel) {
+		Request request = new Request();
+		request.setId(requestModel.getId());
+		request.setTitle(requestModel.getTitle());
+		request.setExecutor(executorService.getExecutorByName(requestModel.getExecutor()));
+		request.setCustomer(customerService.getCustomerByName(requestModel.getCustomer()));
+		request.setStatus(statusService.getStatusByTitle(requestModel.getStatus()));
+		System.out.println(request);
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("redirect:/");
 		requestService.updateRequest(request);
