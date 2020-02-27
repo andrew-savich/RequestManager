@@ -17,9 +17,7 @@ import com.andrewsavich.requestmanager.entity.Status;
 import com.andrewsavich.requestmanager.model.RequestModel;
 import com.andrewsavich.requestmanager.service.CustomerService;
 import com.andrewsavich.requestmanager.service.ExecutorService;
-import com.andrewsavich.requestmanager.service.ExecutorServiceImpl;
 import com.andrewsavich.requestmanager.service.RequestService;
-import com.andrewsavich.requestmanager.service.RequestServiceImpl;
 import com.andrewsavich.requestmanager.service.StatusService;
 
 @Controller
@@ -75,22 +73,11 @@ public class RequestController {
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public ModelAndView addRequest(@ModelAttribute("requestModel") RequestModel requestModel) {
 		ModelAndView modelAndView = new ModelAndView();
-		System.out.println("got requestModel from view: " + requestModel);
-		System.out.println(customerService.getCustomerByName(requestModel.getCustomer()));
-		System.out.println(executorService.getExecutorByName(requestModel.getExecutor()));
-		System.out.println(statusService.getStatusByTitle(requestModel.getStatus()));
 		Request request = new Request();
-		System.out.println("made request object");
 		request.setTitle(requestModel.getTitle());
-		System.out.println("setted request.title");
 		request.setExecutor(executorService.getExecutorByName(requestModel.getExecutor()));
-		System.out.println("setted request.executor");
 		request.setCustomer(customerService.getCustomerByName(requestModel.getCustomer()));
-		System.out.println("setted request.customer");
 		request.setStatus(statusService.getStatusByTitle(requestModel.getStatus()));
-		System.out.println("setted request.status");
-		System.out.println("created Request object" + request);
-
 		modelAndView.setViewName("redirect:/");
 		requestService.addRequest(request);
 		return modelAndView;
